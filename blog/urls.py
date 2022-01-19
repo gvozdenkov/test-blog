@@ -7,6 +7,7 @@ from . import views
 urlpatterns = [
     path('', views.blog, name="blog-home"),
     path('posts', views.posts, name="posts-page"),
+    
     # slug - любое переменное текстовое значение, например posts/my-first-post
-    path('posts/<slug:slug>,', views.post_detail, name="post-detail-page")
+    path('posts/<slug:slug>', views.post_detail, name="post-detail-page")
 ]

@@ -1,0 +1,25 @@
+<!-- от какого темплейта наследуется -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+All posts
+{% endblock title %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'blog/css/post.css' %}">
+<link rel="stylesheet" href="{% static 'blog/css/all-posts.css' %}">
+{% endblock css_files %}
+
+{% block content %}
+<section id="all-posts">
+    <h2>My collected posts</h2>
+
+    <ul>
+        <!-- импортированный контекст из питона all_posts -->
+        {% for post in all_posts %}
+            {% include 'blog/includes/post.html' %}
+        {% endfor %}
+    </ul>
+</section>
+{% endblock content %}

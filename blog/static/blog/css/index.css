@@ -1,0 +1,70 @@
+#welcome {
+    padding: 6rem 30%;
+    font-size: 40px;
+    background-color: #1f3596;
+}
+
+#welcome header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#welcome img {
+    width: 20rem;
+    border-radius: 400px;
+    border: 10px solid rgb(248, 248, 248);
+}
+
+#welcome p {
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+#youtube-link {
+    background-color: #C4302B;
+    border-radius: 6px;
+    padding: 4px 10px;
+}
+
+/* latest posts */
+#latest-posts {
+    background-color: rgb(238, 238, 238);
+    padding: 2rem;
+    border-radius: 10px;
+    width: 70%;
+    margin: -6rem auto 2rem auto;
+    box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.25);
+    
+}
+
+#latest-posts h2 {
+    text-align: center;
+}
+
+#latest-posts ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+}
+
+#latest-posts li {
+    flex: 1;
+  }
+
+#about {
+    background-color: #1f3596;
+    color: white;
+    padding: 3rem 3rem 6rem 3rem;
+}
+
+#about h2 {
+    font-size: 1.5rem;
+}
+
+#about p {
+    font-size: 1.1rem;
+}

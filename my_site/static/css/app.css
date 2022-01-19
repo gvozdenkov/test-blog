@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+/* blobal */
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    margin: 0;
+}
+
+header {
+    text-align: center;
+    background-color: #1f3596;
+    color: rgb(238, 238, 238);
+}
+
+a {
+    text-decoration: none;
+    color: rgb(238, 238, 238);
+
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+}
+
+/* main menu */
+#main-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: #17276d;
+    padding: 0 5%;
+}
+
+#main-menu a {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 52px;
+    color: rgb(238, 238, 238);
+
+    text-decoration: none;
+}
+
+#main-menu a:hover,
+#main-menu a:active {
+    color: coral;
+}
+
+#main-menu nav a {
+    font-size: 30px;
+}
+
+#main-menu nav a:hover,
+#main-menu nav a:active {
+    color: rgb(34, 152, 221);
+}
+

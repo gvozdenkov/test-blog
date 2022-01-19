@@ -1,9 +1,54 @@
-{% extends 'base.html' %}       <!-- от какого темплейта наследуется -->     
+<!-- от какого темплейта наследуется -->
+{% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
-    My blog
+My blog
 {% endblock title %}
 
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'blog/css/index.css' %}">
+<link rel="stylesheet" href="{% static 'blog/css/post.css' %}">
+{% endblock css_files %}
+
 {% block content %}
-    <h1>my blog!</h1>
+
+<!-- header -->
+<section id="welcome">
+    <header>
+        <img src="{% static 'blog/img/avatar_400px.jpg' %}" alt="Arty - the author of this blog" srcset="">
+        <h2>Hi! I am Arty!</h2>
+    </header>
+        <p>This is my blog about everythin I do and everything I like.</p>
+        <p>Have a fun and join me on <a id="youtube-link" href="http://">youtube</a></p>
+</section>
+
+<!-- main section -->
+<main>
+    <section id="latest-posts">
+        <h2>My latest posts</h2>
+        <ul>
+            <!-- импортированный контекст из питона posts -->
+            {% for post in posts %}
+                {% include 'blog/includes/post.html' %}
+            {% endfor %}
+        </ul>
+    </section>
+</main>
+
+<!-- footer section -->
+
+<footer id="about">
+    <h2>About me</h2>
+    <p>Ut dictum eros sit amet faucibus facilisis. Praesent luctus pellentesque odio in lacinia. Donec rhoncus quam at
+        rutrum feugiat. Praesent vel risus a eros consequat laoreet vel sit amet leo. Aliquam a volutpat mi. Aliquam
+        iaculis mattis erat vitae aliquam. Proin et accumsan est.
+    </p>
+    <p>
+        Ut iaculis risus et ante fermentum porta. Nunc ut blandit purus. Cras efficitur luctus tortor, id tempor odio
+        facilisis id. Pellentesque et pretium arcu. Donec at tristique est. Ut pulvinar sodales elit, a facilisis purus
+        elementum lobortis.
+    </p>
+</footer>
+
 {% endblock content %}
