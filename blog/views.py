@@ -1,6 +1,8 @@
 from datetime import date
-from django.shortcuts import render
+from urllib import request
+from django.shortcuts import render, get_object_or_404
 
+from . models import Post
 
 # Временныые данные для постов. Потом будет из базы данных
 
@@ -115,22 +117,16 @@ all_posts = [
     }
 ]
 
-def get_date(post):
-    return post['date']
 
 # Create your views here.
 
 
 def blog(request):
-    # сортирует список и возвращает новый отсортированный. Используя функцию get_date
-    sorted_posts = sorted(all_posts, key=get_date)
-
-    # Берём последние 3 элемента из отсортированного списка
-    latest_posts = sorted_posts[-3:]
-
-    # сортируем в обратном порядке, чтобы самый свежий пост был слева
-    latest_posts.sort(reverse=True, key=get_date)
-
+    # slice 3 первые элемента не влияет на производительность
+    # django создаёт хитрый sql запрос, выбирающий сразу 3 записи
+    # не поддерживает [:-3] но это и не нужно, order_by это делает
+    latest_posts = Post.objects.all().order_by("-date")[:3]
+        
     # Т.к. app прописан в INSTALLED_APPS, то папку templates (в app) не указываем, только blog
     return render(request, "blog/index.html", {
         "posts": latest_posts           # контекст для передачи в html
@@ -138,15 +134,19 @@ def blog(request):
 
 
 def posts(request):
+    all_posts = Post.objects.all().order_by("-date")
     return render(request, "blog/all-posts.html", {
         "all_posts": all_posts
     })
 
 def post_detail(request, slug):
-    # next перебирает элементы списка и возвращает нужный элемент списка по условию
-    detail_post = next(post for post in all_posts if post['slug'] == slug)
+    # detail_post = Post.objects.get(slug__exact=slug)
+    detail_post = get_object_or_404(Post, slug=slug)
     return render(request, "blog/post-detail.html", {
-        "post": detail_post
+        "post": detail_post,
+        "tags": detail_post.tag.all()
     })
-    
+
+def html_test_01(request):
+    return render(request, "blog/html-test/html-test_01.html")
 
